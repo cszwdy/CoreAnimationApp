@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3E63FE1BE85C7B007349E0 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E63FC1BE85C7B007349E0 /* AnimationView.swift */; };
+		2C3E63FF1BE85C7B007349E0 /* QCMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E63FD1BE85C7B007349E0 /* QCMethod.swift */; };
 		2C8CB9B71BE7AB7E00EF8F7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8CB9B61BE7AB7E00EF8F7D /* AppDelegate.swift */; };
 		2C8CB9B91BE7AB7E00EF8F7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8CB9B81BE7AB7E00EF8F7D /* ViewController.swift */; };
 		2C8CB9BC1BE7AB7E00EF8F7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C8CB9BA1BE7AB7E00EF8F7D /* Main.storyboard */; };
@@ -14,6 +16,9 @@
 		2C8CB9C11BE7AB7E00EF8F7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C8CB9BF1BE7AB7E00EF8F7D /* LaunchScreen.storyboard */; };
 		2C8CB9CC1BE7AB7E00EF8F7D /* CoreAnimationAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8CB9CB1BE7AB7E00EF8F7D /* CoreAnimationAppTests.swift */; };
 		2C8CB9D71BE7AB7E00EF8F7D /* CoreAnimationAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8CB9D61BE7AB7E00EF8F7D /* CoreAnimationAppUITests.swift */; };
+		2C9398991BE8904600681D61 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9398981BE8904600681D61 /* Calculator.swift */; };
+		2C9398D81BEA110000681D61 /* TextCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9398D71BEA110000681D61 /* TextCalculator.swift */; };
+		2C9398DD1BEB5B9700681D61 /* RTWSDingDingG1v1-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C9398DC1BEB5B9600681D61 /* RTWSDingDingG1v1-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C2E36A11BE850A50041B02F /* textPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = textPlayground.playground; sourceTree = "<group>"; };
+		2C3E63FC1BE85C7B007349E0 /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		2C3E63FD1BE85C7B007349E0 /* QCMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCMethod.swift; sourceTree = "<group>"; };
 		2C8CB9B31BE7AB7E00EF8F7D /* CoreAnimationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreAnimationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8CB9B61BE7AB7E00EF8F7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C8CB9B81BE7AB7E00EF8F7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +55,10 @@
 		2C8CB9D21BE7AB7E00EF8F7D /* CoreAnimationAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreAnimationAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8CB9D61BE7AB7E00EF8F7D /* CoreAnimationAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreAnimationAppUITests.swift; sourceTree = "<group>"; };
 		2C8CB9D81BE7AB7E00EF8F7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C9398981BE8904600681D61 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		2C9398D71BEA110000681D61 /* TextCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCalculator.swift; sourceTree = "<group>"; };
+		2C9398DB1BEA193C00681D61 /* TextCal.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TextCal.playground; sourceTree = "<group>"; };
+		2C9398DC1BEB5B9600681D61 /* RTWSDingDingG1v1-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RTWSDingDingG1v1-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +109,15 @@
 		2C8CB9B51BE7AB7E00EF8F7D /* CoreAnimationApp */ = {
 			isa = PBXGroup;
 			children = (
+				2C9398DC1BEB5B9600681D61 /* RTWSDingDingG1v1-Regular.ttf */,
 				2C8CB9B61BE7AB7E00EF8F7D /* AppDelegate.swift */,
 				2C8CB9B81BE7AB7E00EF8F7D /* ViewController.swift */,
+				2C9398D71BEA110000681D61 /* TextCalculator.swift */,
+				2C9398DB1BEA193C00681D61 /* TextCal.playground */,
+				2C9398981BE8904600681D61 /* Calculator.swift */,
+				2C3E63FC1BE85C7B007349E0 /* AnimationView.swift */,
+				2C3E63FD1BE85C7B007349E0 /* QCMethod.swift */,
+				2C2E36A11BE850A50041B02F /* textPlayground.playground */,
 				2C8CB9BA1BE7AB7E00EF8F7D /* Main.storyboard */,
 				2C8CB9BD1BE7AB7E00EF8F7D /* Assets.xcassets */,
 				2C8CB9BF1BE7AB7E00EF8F7D /* LaunchScreen.storyboard */,
@@ -231,6 +250,7 @@
 			files = (
 				2C8CB9C11BE7AB7E00EF8F7D /* LaunchScreen.storyboard in Resources */,
 				2C8CB9BE1BE7AB7E00EF8F7D /* Assets.xcassets in Resources */,
+				2C9398DD1BEB5B9700681D61 /* RTWSDingDingG1v1-Regular.ttf in Resources */,
 				2C8CB9BC1BE7AB7E00EF8F7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +276,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C3E63FE1BE85C7B007349E0 /* AnimationView.swift in Sources */,
 				2C8CB9B91BE7AB7E00EF8F7D /* ViewController.swift in Sources */,
+				2C9398D81BEA110000681D61 /* TextCalculator.swift in Sources */,
+				2C3E63FF1BE85C7B007349E0 /* QCMethod.swift in Sources */,
+				2C9398991BE8904600681D61 /* Calculator.swift in Sources */,
 				2C8CB9B71BE7AB7E00EF8F7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +423,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ZHANG YONGQUAN (5797F57Q2L)";
 				INFOPLIST_FILE = CoreAnimationApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.emiaostein.CoreAnimationApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.botai.com.emiaostein.CoreAnimationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "37016302-e70e-4d2c-8fb9-f4821916c503";
 			};
 			name = Debug;
 		};
@@ -410,10 +436,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ZHANG YONGQUAN (5797F57Q2L)";
 				INFOPLIST_FILE = CoreAnimationApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.emiaostein.CoreAnimationApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.botai.com.emiaostein.CoreAnimationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "37016302-e70e-4d2c-8fb9-f4821916c503";
 			};
 			name = Release;
 		};
@@ -484,6 +512,7 @@
 				2C8CB9DD1BE7AB7E00EF8F7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C8CB9DE1BE7AB7E00EF8F7D /* Build configuration list for PBXNativeTarget "CoreAnimationAppTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +521,7 @@
 				2C8CB9E01BE7AB7E00EF8F7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C8CB9E11BE7AB7E00EF8F7D /* Build configuration list for PBXNativeTarget "CoreAnimationAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +530,7 @@
 				2C8CB9E31BE7AB7E00EF8F7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
