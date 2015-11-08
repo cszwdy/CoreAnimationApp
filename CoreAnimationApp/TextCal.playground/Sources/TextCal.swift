@@ -12,7 +12,8 @@ public extension String {
     layout.addTextContainer(container)
     storage.addLayoutManager(layout)
 
-    let _ = layout.glyphRangeForTextContainer(container)
+//    layout.ensureLayoutForTextContainer(container)
+//    let _ = layout.glyphRangeForTextContainer(container)
     return layout.usedRectForTextContainer(container)
   }
 }

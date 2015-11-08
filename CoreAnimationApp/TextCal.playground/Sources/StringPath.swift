@@ -1,18 +1,91 @@
 import Foundation
 import UIKit
 
-public struct pathForLineAttributeStringInfo {
+public struct PathAttributeStringInfo {
   
-  let path: CGPath?
-  let attributeString: NSAttributedString
-  let position: CGPoint
-  let emoji: Bool
+  public let path: CGPath?
+  public let attributeString: NSAttributedString
+//  public let position: CGPoint
+  public let emoji: Bool
+  public let emojiRect: CGRect?
   
 }
 
-public func pathForLineAttributeString(attributeString: NSAttributedString) -> CGPath? {
+public func pathForLettersAttribueString(attributeString: NSAttributedString) -> [PathAttributeStringInfo] {
   
-  let paths = CGPathCreateMutable()
+  var pathInfos = [PathAttributeStringInfo]()
+  let line = CTLineCreateWithAttributedString(attributeString)
+  let runs = CTLineGetGlyphRuns(line)
+  let runCount = CFArrayGetCount(runs)
+  
+  for i in 0..<runCount {
+    
+    let run = unsafeBitCast(CFArrayGetValueAtIndex(runs, i), CTRun.self)
+    let attributes = CTRunGetAttributes(run)
+    let runFont = unsafeBitCast(CFDictionaryGetValue(attributes, unsafeAddressOf(kCTFontAttributeName)), CTFont.self)
+    let stringRange = CTRunGetStringRange(run)
+    let subString = attributeString.attributedSubstringFromRange(NSMakeRange(stringRange.location, stringRange.length))
+    
+    // 2. get glyphs and associate postions in each run
+    let glyphCount = CTRunGetGlyphCount(run)
+    var glyphs = Array(count: glyphCount, repeatedValue: CGGlyph())
+    var positions = Array(count: glyphCount, repeatedValue: CGPoint())
+    CTRunGetGlyphs(run, CFRangeMake(0, glyphCount), &glyphs)
+    CTRunGetPositions(run, CFRangeMake(0, glyphCount), &positions)
+    
+    
+    for j in 0..<glyphCount {
+      
+      
+      
+      var paths: CGMutablePath?
+      var rect: CGRect?
+      var emojiable = false
+      
+      let glyph = glyphs[j]
+      let position = positions[j]
+      
+      if let pa = CTFontCreatePathForGlyph(runFont, glyph, nil) {
+        // 
+        print("Text")
+        let imageBound = CTRunGetImageBounds(run, nil, CFRangeMake(j, 1))
+        paths = paths ?? CGPathCreateMutable()
+        rect = rect ?? CGRect(origin: position, size: CGSize(width: 0, height: imageBound.height))
+        rect!.size.width += imageBound.width
+        var transform = CGAffineTransformMakeTranslation(0, 0)
+        CGPathAddPath(paths, &transform, pa)
+        
+      } else {
+        emojiable = true
+        // color glyph
+        print("Emoji")
+        let imageBounds = CTRunGetImageBounds(run, nil, CFRangeMake(j, 1))
+        paths = paths ?? CGPathCreateMutable()
+        rect = rect ?? CGRect(origin: position, size: CGSize(width: 0, height: imageBounds.size.height))
+        rect!.size.width += imageBounds.width
+        let colorGlyphPath = CGPathCreateWithRect(CGRect(origin: CGPointZero, size: imageBounds.size), nil)
+        var transform = CGAffineTransformMakeTranslation(position.x, position.y)
+        CGPathAddPath(paths, &transform, colorGlyphPath)
+      }
+//      let sub = subString.attributedSubstringFromRange(NSMakeRange(j, glyphCount))
+      if let paths = paths {
+        let runPaths = CGPathCreateCopy(paths)
+        let info = PathAttributeStringInfo(path: runPaths!, attributeString: subString, emoji: emojiable, emojiRect: rect)
+        pathInfos.append(info)
+      }
+    }
+    
+    
+  }
+  
+  return pathInfos
+}
+
+public func pathForLineAttributeString(attributeString: NSAttributedString) -> [PathAttributeStringInfo] {
+  
+  var pathInfos = [PathAttributeStringInfo]()
+  
+  var paths: CGMutablePath?
   
   let line = CTLineCreateWithAttributedString(attributeString)
   let runs = CTLineGetGlyphRuns(line)
@@ -20,55 +93,70 @@ public func pathForLineAttributeString(attributeString: NSAttributedString) -> C
   
   for i in 0..<runsCount {
     
+    // 1. get each run
     let run = unsafeBitCast(CFArrayGetValueAtIndex(runs, i), CTRunRef.self)
     let runAttributes = CTRunGetAttributes(run)
     let runFont = unsafeBitCast(CFDictionaryGetValue(runAttributes, unsafeAddressOf(kCTFontAttributeName)), CTFontRef.self)
+    let symbolTrait = CTFontGetSymbolicTraits(runFont)
     
+//    let ColorGlyphAvaliable = (symbolTrait == .ColorGlyphsTrait) //check whether Color glyph
+    let stringRange = CTRunGetStringRange(run)
+    
+    let subString = attributeString.attributedSubstringFromRange(NSMakeRange(stringRange.location, stringRange.length)) //
+    
+    // 2. get glyphs and associate postions in each run
     let glyphCount = CTRunGetGlyphCount(run)
     var glyphs = Array(count: glyphCount, repeatedValue: CGGlyph())
     var positions = Array(count: glyphCount, repeatedValue: CGPoint())
     CTRunGetGlyphs(run, CFRangeMake(0, glyphCount), &glyphs)
     CTRunGetPositions(run, CFRangeMake(0, glyphCount), &positions)
-
-    for j in 0..<glyphCount {
-      let glyph = glyphs[j]
-      let postion = positions[j]
-
-      let glyphPath = CTFontCreatePathForGlyph(runFont, glyph, nil)
-      var transform = CGAffineTransformMakeTranslation(postion.x, postion.y)
-      CGPathAddPath(paths, &transform, glyphPath)
-    }
-    
-  }
-//
-//  let runs = unsafeBitCast(CTLineGetGlyphRuns(line), CTRun.self)
-//
-//  let arun = (runs as [CTRun])[0]
-//  let runAttribute = CTRunGetAttributes(arun)
-//  let aa = runAttribute[(kCTFontAttributeName as String)]
-//  for run in runs {
-//
-//    let runAttribute = CTRunGetAttributes(run) as NSDictionary
-//    let runFont = runAttribute[kCTFontAttributeName] as! CTFontRef
-//    let runFont = runAttribute[(kCTFontAttributeName as String)] as! CTFont
-//    let glyphsCount = CTRunGetGlyphCount(run)
-//    let glyphs = unsafeBitCast(CTRunGetGlyphsPtr(run), Array<CGGlyph>.self)
-//    let glyphPostions = unsafeBitCast(CTRunGetPositionsPtr(run), Array<CGPoint>.self)
-//
-//    for i in 0..<glyphsCount {
-//      
-//      let glyph = glyphs[i]
-//      let postion = glyphPostions[i]
-//
-//      let glyphPath = CTFontCreatePathForGlyph(runFont, glyph, nil)
-//      var transform = CGAffineTransformMakeTranslation(postion.x, postion.y)
-//      CGPathAddPath(paths, &transform, glyphPath)
+//    print("symbolTrait = \(symbolTrait) glyphCount = \(CTFontSymbolicTraits.ColorGlyphsTrait)" )
+//    if case CTFontSymbolicTraits.ColorGlyphsTrait = symbolTrait {
+//    
+//      let imageBounds = CTRunGetImageBounds(run, nil, CFRangeMake(0, glyphCount))
+//      var transform = CGAffineTransformMakeTranslation(positions[0].x, positions[0].y)
+//      let colorGlyphPath = CGPathCreateWithRect(CGRect(origin: CGPointZero, size: imageBounds.size), nil)
+//      CGPathAddPath(paths, &transform, colorGlyphPath)
+//    
 //    }
-//  }
+//    else {
+    var colorGlyphs: CGMutablePath?
+    var colorGlyphsRect: CGRect?
+      for j in 0..<glyphCount {
+        let glyph = glyphs[j]
+        let postion = positions[j]
+        
+          // 3. create path for each glyph
+          if let glyphPath = CTFontCreatePathForGlyph(runFont, glyph, nil) {
+            paths = paths ?? CGPathCreateMutable()
+            var transform = CGAffineTransformMakeTranslation(postion.x, postion.y)
+            CGPathAddPath(paths, &transform, glyphPath)
+          } else {
+            // color glyph
+            let imageBounds = CTRunGetImageBounds(run, nil, CFRangeMake(j, 1))
+            colorGlyphs = colorGlyphs ?? CGPathCreateMutable()
+            colorGlyphsRect = colorGlyphsRect ?? CGRect(origin: positions[0], size: CGSize(width: 0, height: imageBounds.size.height))
+            colorGlyphsRect!.size.width += imageBounds.size.width
+            let colorGlyphPath = CGPathCreateWithRect(CGRect(origin: CGPointZero, size: imageBounds.size), nil)
+            var transform = CGAffineTransformMakeTranslation(postion.x, postion.y)
+            CGPathAddPath(colorGlyphs, &transform, colorGlyphPath)
+          }
+      }
+    
+    if let colorGlyphs = colorGlyphs {
+      let info = PathAttributeStringInfo(path: colorGlyphs, attributeString: subString, emoji: true, emojiRect: colorGlyphsRect!)
+      pathInfos.append(info)
+    }
+//    }
+  }
   
-  let finalPath = CGPathCreateCopy(paths)
+  if let paths = paths {
+    let finalPath = CGPathCreateCopy(paths)
+    let info = PathAttributeStringInfo(path: finalPath, attributeString: attributeString, emoji: false, emojiRect: nil)
+    pathInfos.append(info)
+  }
   
-  return finalPath
+  return pathInfos
 }
 
 //func pathForCharacterWithAttributeString(attributeString: NSAttributedString) -> 

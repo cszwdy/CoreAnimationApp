@@ -25,6 +25,8 @@ public func setupTextView(string: String, attributes: [String: AnyObject], exclu
   let attrString = NSAttributedString(string: str, attributes: att)
   let textSize = str.size(withAttributes: att, constrainedTo: CGSize(width: CGFloat.max, height: CGFloat.max), exclusionPath: nil).size
   
+//  print(textSize)
+  
   let textView = UITextView(frame: CGRect(origin: CGPointZero, size: textSize))
   textView.textContainer.lineFragmentPadding = 0.0
   textView.textContainer.exclusionPaths = exclusionPaths ?? []
