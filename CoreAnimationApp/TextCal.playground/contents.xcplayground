@@ -3,5 +3,6 @@
     <pages>
         <page name='StringPathPage'/>
         <page name='TextSplite'/>
+        <page name='coreText'/>
     </pages>
 </playground>

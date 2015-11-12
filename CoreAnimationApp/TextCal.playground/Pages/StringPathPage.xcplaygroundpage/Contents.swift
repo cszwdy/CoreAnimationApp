@@ -42,13 +42,3 @@ attr.enumerateAttributesInRange(NSMakeRange(0, attr.length), options: .LongestEf
   print("str = \(str), range = \(range)")
 }
 
-
-let line = CTLineCreateWithAttributedString(attr)
-let runs = CTLineGetGlyphRuns(line)
-let runCount = CFArrayGetCount(runs)
-
-let run = unsafeBitCast(CFArrayGetValueAtIndex(runs, 4), CTRun.self)
-let a = CTRunGetStringRange(run)
-let runAttributes = CTRunGetAttributes(run)
-let runFont = unsafeBitCast(CFDictionaryGetValue(runAttributes, unsafeAddressOf(kCTFontAttributeName)), CTFontRef.self)
-//print(attrFont)

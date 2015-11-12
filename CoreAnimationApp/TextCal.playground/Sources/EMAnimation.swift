@@ -81,7 +81,6 @@ public enum EMAnimationPlayOrderType {
   
 }
 
-
 public struct EMAnimationConfig {
   
   public let duration: CFTimeInterval

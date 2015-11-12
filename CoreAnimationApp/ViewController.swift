@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     textView.textContainerInset = UIEdgeInsetsZero
     textView.attributedText = demoString()
     textView.bounds.size = textView.contentSize
-//    textView.hidden = true
+    textView.hidden = true
     
     textView.showLinefragments()
     
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
   }
   @IBAction func switchAction(sender: UISwitch) {
     
-    animationView.layer.drawsAsynchronously = sender.on
+//    animationView.layer.drawsAsynchronously = sender.on
   }
   
   override func viewDidAppear(animated: Bool) {
@@ -57,14 +57,14 @@ class ViewController: UIViewController {
   func demoString() -> NSAttributedString
   {
     // Create the attributed string
-    let demoString = NSMutableAttributedString(string:"Welcome to 🐱🐱Attributed String Creator\n\nSimply paste, write or import any kind of text into this 🐱🐱area and the code to make an NSMutableAtrributedString for it will be generated below; 🐱🐱along with all of its font, colour and paragraph formatting. \n\nSelect a name for your variable in the top left corner, copy the code into your IDE and assign it.\n\nThanks For Using Attributed String Creator")
+    let demoString = NSMutableAttributedString(string:"Welcome to 💻💻Attribu🐱d String Creator\n\nSimply paste, write or import any kind of text into this 💻sdarea and the code to make an NSMutableAtrributedString for it will be generated below; 🐱🐱along with all of its font, colour and paragraph form🐱ting. \n\nSelect a name for your variable in the top left corner, copy the code i🐱o your IDE a🐱 assign it.\n\nThan🐱 For ouing Attributed 🐱ring Creator")
     
     // Declare the fonts
     let demoStringFont1 = UIFont(name:"AvenirNext-Regular", size:24.0)
     let demoStringFont2 = UIFont(name:"Helvetica", size:12.0)
     let demoStringFont3 = UIFont(name:"Avenir-Book", size:12.0)
     let demoStringFont4 = UIFont(name:"TimesNewRomanPSMT", size:12.0)
-    let demoStringFont5 = UIFont(name:"Zapfino", size:12.0)
+    let demoStringFont5 = UIFont(name:"Zapfino", size:20.0)
     
     // Declare the colors
     let demoStringColor1 = UIColor(red: 0.292745, green: 0.461693, blue: 0.998524, alpha: 1.000000)

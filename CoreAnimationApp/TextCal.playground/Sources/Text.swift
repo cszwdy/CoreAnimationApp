@@ -61,6 +61,7 @@ public func demoString() -> NSAttributedString
   
   // Declare the colors
   let demoStringColor1 = UIColor(red: 0.292745, green: 0.461693, blue: 0.998524, alpha: 1.000000)
+  let demoStringColor2 = UIColor(red: 1.000000, green: 0.000000, blue: 0.000000, alpha: 1.000000)
   
   // Declare the paragraph styles
   let demoStringParaStyle1 = NSMutableParagraphStyle()
@@ -82,10 +83,11 @@ public func demoString() -> NSAttributedString
   
   
   // Create the attributes and add them to the string
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(0,3))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont1!, range:NSMakeRange(0,3))
   demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(0,3))
   demoString.addAttribute(NSUnderlineStyleAttributeName, value:1, range:NSMakeRange(0,3))
-  demoString.addAttribute(NSFontAttributeName, value:demoStringFont1!, range:NSMakeRange(0,3))
-  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(0,3))
+  demoString.addAttribute(NSBackgroundColorAttributeName, value:demoStringColor2, range:NSMakeRange(0,3))
   demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(3,3))
   demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(3,3))
   demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(3,3))
@@ -99,14 +101,17 @@ public func demoString() -> NSAttributedString
   demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(9,4))
   demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(9,4))
   demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(9,4))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(13,4))
   demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(13,4))
   demoString.addAttribute(NSFontAttributeName, value:demoStringFont4!, range:NSMakeRange(13,4))
-  demoString.addAttribute(NSFontAttributeName, value:demoStringFont4!, range:NSMakeRange(17,2))
   demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(17,2))
   demoString.addAttribute(NSUnderlineStyleAttributeName, value:1, range:NSMakeRange(17,2))
-  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(19,1))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont4!, range:NSMakeRange(17,2))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(17,2))
   demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(19,1))
   demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(19,1))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(19,1))
+  demoString.addAttribute(NSUnderlineStyleAttributeName, value:1, range:NSMakeRange(19,1))
   
   return NSAttributedString(attributedString:demoString)
 }

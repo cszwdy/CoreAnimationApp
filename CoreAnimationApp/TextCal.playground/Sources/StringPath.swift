@@ -16,7 +16,6 @@ public func pathForAttrbuteStringBy(attributeString: NSAttributedString, options
   let str = attributeString.string as NSString
   str.enumerateSubstringsInRange(NSMakeRange(0, str.length), options: options) { (subString, subStringRange, enclosedRange, stop) -> Void in
     
-    print(subStringRange)
   }
   
   
@@ -36,6 +35,8 @@ public func pathForLettersAttribueString(attributeString: NSAttributedString) ->
     let stringRange = CTRunGetStringRange(run)
     let subString = attributeString.attributedSubstringFromRange(NSMakeRange(stringRange.location, stringRange.length))
     
+    let symboltraint = CTFontGetSymbolicTraits(runFont)
+    
     // 2. get glyphs and associate postions in each run
     let glyphCount = CTRunGetGlyphCount(run)
     var glyphs = Array(count: glyphCount, repeatedValue: CGGlyph())
@@ -44,9 +45,7 @@ public func pathForLettersAttribueString(attributeString: NSAttributedString) ->
     CTRunGetPositions(run, CFRangeMake(0, glyphCount), &positions)
     
     for j in 0..<glyphCount {
-      
-      
-      
+
       var paths: CGMutablePath?
       var rect: CGRect?
       var emojiable = false
@@ -56,7 +55,7 @@ public func pathForLettersAttribueString(attributeString: NSAttributedString) ->
       
       if let pa = CTFontCreatePathForGlyph(runFont, glyph, nil) {
         // 
-        print("Text")
+//        print("Text")
         let imageBound = CTRunGetImageBounds(run, nil, CFRangeMake(j, 1))
         paths = paths ?? CGPathCreateMutable()
         rect = rect ?? CGRect(origin: position, size: CGSize(width: 0, height: imageBound.height))
@@ -65,16 +64,26 @@ public func pathForLettersAttribueString(attributeString: NSAttributedString) ->
         CGPathAddPath(paths, &transform, pa)
         
       } else {
+        if symboltraint != CTFontSymbolicTraits(rawValue: 3221234688) {
+          continue
+        }
         emojiable = true
         // color glyph
-        print("Emoji")
+//        print("symboltraint = \(symboltraint),Emoji = \(subString.string), position = \(position)")
+        var ascent: CGFloat = 0.0
+        var descent: CGFloat = 0.0
+        var leading: CGFloat = 0.0
+        let typeboundWidth = CTRunGetTypographicBounds(run, CFRangeMake(j, 1), &ascent, &descent, &leading)
+        print("ascent = \(descent)")
+        let typeboundSize = CGSize(width: CGFloat(typeboundWidth), height: ascent + descent + leading)
         let imageBounds = CTRunGetImageBounds(run, nil, CFRangeMake(j, 1))
+        let boundSize = typeboundSize
         paths = paths ?? CGPathCreateMutable()
-        rect = rect ?? CGRect(origin: position, size: CGSize(width: 0, height: imageBounds.height))
-        rect!.size.width += imageBounds.width
-        let colorGlyphPath = CGPathCreateWithRect(CGRect(origin: CGPointZero, size: imageBounds.size), nil)
-        var transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(position.x, position.y), CGAffineTransformMakeScale(1.0, -1.0))
-        CGPathAddPath(paths, &transform, colorGlyphPath)
+        rect = rect ?? CGRect(origin: position, size: CGSize(width: 0, height: boundSize.height))
+        rect!.size.width += boundSize.width
+//        let colorGlyphPath = CGPathCreateWithRect(CGRect(origin: CGPointZero, size: imageBounds.size), nil)
+//        var transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(position.x, position.y), CGAffineTransformMakeScale(1.0, -1.0))
+//        CGPathAddPath(paths, &transform, nil)
       }
 //      let sub = subString.attributedSubstringFromRange(NSMakeRange(j, glyphCount))
       if let paths = paths {

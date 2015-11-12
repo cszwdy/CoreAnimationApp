@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timeline
+   version = "3.0">
+   <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=3&amp;CharacterRangeLoc=64&amp;EndingColumnNumber=8&amp;EndingLineNumber=10&amp;StartingColumnNumber=5&amp;StartingLineNumber=10&amp;Timestamp=468992123.983863"
+         lockedSize = "{346, 114}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=5&amp;CharacterRangeLoc=1059&amp;EndingColumnNumber=6&amp;EndingLineNumber=30&amp;StartingColumnNumber=1&amp;StartingLineNumber=30&amp;Timestamp=468994107.159512"
+         lockedSize = "{355, 208}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=3&amp;CharacterRangeLoc=834&amp;EndingColumnNumber=8&amp;EndingLineNumber=24&amp;StartingColumnNumber=5&amp;StartingLineNumber=24&amp;Timestamp=468994107.153205"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=3&amp;CharacterRangeLoc=1339&amp;EndingColumnNumber=8&amp;EndingLineNumber=38&amp;StartingColumnNumber=5&amp;StartingLineNumber=38&amp;Timestamp=469010888.879389"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "#CharacterRangeLen=2&amp;CharacterRangeLoc=1827&amp;EndingColumnNumber=3&amp;EndingLineNumber=54&amp;StartingColumnNumber=1&amp;StartingLineNumber=54&amp;Timestamp=469014971.850174"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+   </TimelineItems>
+</Timeline>

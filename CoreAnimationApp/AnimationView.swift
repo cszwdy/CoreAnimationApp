@@ -85,11 +85,15 @@ class AnimationView: UIView {
           layers["emojiLayer(\(i),\(j))"] = emojiLayer
 //          emojiLayer.geometryFlipped = true
           emojiLayer.frame = pathInfo.emojiRect!
+//          emojiLayer.backgroundColor = UIColor.redColor().CGColor
 //          emojiLayer.frame.size.height += 6
 //          emojiLayer.frame.origin.y -= 6
           
 //          emojiLayer.backgroundColor = UIColor.redColor().CGColor
-          emojiLayer.frame.origin.y += -pathInfo.emojiRect!.height + origin.y + rect.origin.y
+          print("str = \(pathInfo.attributeString.string) emojiRect = \(pathInfo.emojiRect), rect = \(rect)")
+          emojiLayer.frame.origin.y += -pathInfo.emojiRect!.height + origin.y + rect.origin.y + 6
+//          emojiLayer.frame.size.height = rect.size.height
+//          emojiLayer.frame.origin.y += rect.origin.y
           emojiLayer.frame.origin.x += rect.origin.x
           emojiLayer.string = pathInfo.attributeString
           effect.addSublayer(emojiLayer)
