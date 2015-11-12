@@ -11,8 +11,18 @@ public struct PathAttributeStringInfo {
   
 }
 
-public func pathForLettersAttribueString(attributeString: NSAttributedString) -> [PathAttributeStringInfo] {
+public func pathForAttrbuteStringBy(attributeString: NSAttributedString, options: NSStringEnumerationOptions) {
   
+  let str = attributeString.string as NSString
+  str.enumerateSubstringsInRange(NSMakeRange(0, str.length), options: options) { (subString, subStringRange, enclosedRange, stop) -> Void in
+    
+    print(subStringRange)
+  }
+  
+  
+}
+
+public func pathForLettersAttribueString(attributeString: NSAttributedString) -> [PathAttributeStringInfo] {
   var pathInfos = [PathAttributeStringInfo]()
   let line = CTLineCreateWithAttributedString(attributeString)
   let runs = CTLineGetGlyphRuns(line)
@@ -33,7 +43,6 @@ public func pathForLettersAttribueString(attributeString: NSAttributedString) ->
     CTRunGetGlyphs(run, CFRangeMake(0, glyphCount), &glyphs)
     CTRunGetPositions(run, CFRangeMake(0, glyphCount), &positions)
     
-    
     for j in 0..<glyphCount {
       
       
@@ -52,7 +61,7 @@ public func pathForLettersAttribueString(attributeString: NSAttributedString) ->
         paths = paths ?? CGPathCreateMutable()
         rect = rect ?? CGRect(origin: position, size: CGSize(width: 0, height: imageBound.height))
         rect!.size.width += imageBound.width
-        var transform = CGAffineTransformMakeTranslation(0, 0)
+        var transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0, -1.0), CGAffineTransformMakeTranslation(0, rect!.size.height))
         CGPathAddPath(paths, &transform, pa)
         
       } else {
@@ -61,10 +70,10 @@ public func pathForLettersAttribueString(attributeString: NSAttributedString) ->
         print("Emoji")
         let imageBounds = CTRunGetImageBounds(run, nil, CFRangeMake(j, 1))
         paths = paths ?? CGPathCreateMutable()
-        rect = rect ?? CGRect(origin: position, size: CGSize(width: 0, height: imageBounds.size.height))
+        rect = rect ?? CGRect(origin: position, size: CGSize(width: 0, height: imageBounds.height))
         rect!.size.width += imageBounds.width
         let colorGlyphPath = CGPathCreateWithRect(CGRect(origin: CGPointZero, size: imageBounds.size), nil)
-        var transform = CGAffineTransformMakeTranslation(position.x, position.y)
+        var transform = CGAffineTransformConcat(CGAffineTransformMakeTranslation(position.x, position.y), CGAffineTransformMakeScale(1.0, -1.0))
         CGPathAddPath(paths, &transform, colorGlyphPath)
       }
 //      let sub = subString.attributedSubstringFromRange(NSMakeRange(j, glyphCount))

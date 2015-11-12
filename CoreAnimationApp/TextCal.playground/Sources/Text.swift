@@ -48,4 +48,65 @@ public let fontSL = UIFont.systemFontOfSize(30)
 public let fontD = UIFont(name: "Zapfino", size: 15)! //AvenirNext-Italic Zapfino,AmericanTypewriter
 public let fontDL = UIFont(name: "Zapfino", size: 30)! //
 
-
+public func demoString() -> NSAttributedString
+{
+  // Create the attributed string
+  let demoString = NSMutableAttributedString(string:"Welcome to ou🐱🐱🐱n")
+  
+  // Declare the fonts
+  let demoStringFont1 = UIFont(name:"Zapfino", size:24.0)
+  let demoStringFont2 = UIFont(name:"AvenirNext-Regular", size:24.0)
+  let demoStringFont3 = UIFont(name:"Helvetica-Bold", size:24.0)
+  let demoStringFont4 = UIFont(name:"AppleColorEmoji", size:24.0)
+  
+  // Declare the colors
+  let demoStringColor1 = UIColor(red: 0.292745, green: 0.461693, blue: 0.998524, alpha: 1.000000)
+  
+  // Declare the paragraph styles
+  let demoStringParaStyle1 = NSMutableParagraphStyle()
+  demoStringParaStyle1.alignment = NSTextAlignment.Center
+  demoStringParaStyle1.tabStops = [
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 28.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 56.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 84.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 112.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 140.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 168.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 196.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 224.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 252.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 280.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 308.000000, options: [String: AnyObject]()),
+    NSTextTab(textAlignment: NSTextAlignment.Left, location: 336.000000, options: [String: AnyObject]())
+  ]
+  
+  
+  // Create the attributes and add them to the string
+  demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(0,3))
+  demoString.addAttribute(NSUnderlineStyleAttributeName, value:1, range:NSMakeRange(0,3))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont1!, range:NSMakeRange(0,3))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(0,3))
+  demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(3,3))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(3,3))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(3,3))
+  demoString.addAttribute(NSUnderlineStyleAttributeName, value:1, range:NSMakeRange(3,3))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(6,2))
+  demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(6,2))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(6,2))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(8,1))
+  demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(8,1))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont3!, range:NSMakeRange(8,1))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(9,4))
+  demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(9,4))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(9,4))
+  demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(13,4))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont4!, range:NSMakeRange(13,4))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont4!, range:NSMakeRange(17,2))
+  demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(17,2))
+  demoString.addAttribute(NSUnderlineStyleAttributeName, value:1, range:NSMakeRange(17,2))
+  demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(19,1))
+  demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(19,1))
+  demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(19,1))
+  
+  return NSAttributedString(attributedString:demoString)
+}

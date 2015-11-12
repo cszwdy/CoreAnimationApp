@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C0120B21BF1F696008D0AD5 /* EMAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0120B11BF1F696008D0AD5 /* EMAnimation.swift */; };
+		2C1F744E1BF02F7B00021255 /* TextCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F744D1BF02F7B00021255 /* TextCal.swift */; };
+		2C1F74501BF02F7F00021255 /* StringPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F744F1BF02F7F00021255 /* StringPath.swift */; };
+		2C1F74521BF02F9300021255 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1F74511BF02F9300021255 /* helper.swift */; };
 		2C3E63FE1BE85C7B007349E0 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E63FC1BE85C7B007349E0 /* AnimationView.swift */; };
 		2C3E63FF1BE85C7B007349E0 /* QCMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3E63FD1BE85C7B007349E0 /* QCMethod.swift */; };
 		2C8CB9B71BE7AB7E00EF8F7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8CB9B61BE7AB7E00EF8F7D /* AppDelegate.swift */; };
@@ -39,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C0120B11BF1F696008D0AD5 /* EMAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EMAnimation.swift; path = TextCal.playground/Sources/EMAnimation.swift; sourceTree = "<group>"; };
+		2C1F744D1BF02F7B00021255 /* TextCal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextCal.swift; path = TextCal.playground/Sources/TextCal.swift; sourceTree = "<group>"; };
+		2C1F744F1BF02F7F00021255 /* StringPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringPath.swift; path = TextCal.playground/Sources/StringPath.swift; sourceTree = "<group>"; };
+		2C1F74511BF02F9300021255 /* helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = helper.swift; path = TextCal.playground/Sources/helper.swift; sourceTree = "<group>"; };
 		2C2E36A11BE850A50041B02F /* textPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = textPlayground.playground; sourceTree = "<group>"; };
 		2C3E63FC1BE85C7B007349E0 /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		2C3E63FD1BE85C7B007349E0 /* QCMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QCMethod.swift; sourceTree = "<group>"; };
@@ -110,12 +118,16 @@
 			isa = PBXGroup;
 			children = (
 				2C9398DC1BEB5B9600681D61 /* RTWSDingDingG1v1-Regular.ttf */,
+				2C0120B11BF1F696008D0AD5 /* EMAnimation.swift */,
 				2C8CB9B61BE7AB7E00EF8F7D /* AppDelegate.swift */,
 				2C8CB9B81BE7AB7E00EF8F7D /* ViewController.swift */,
+				2C3E63FC1BE85C7B007349E0 /* AnimationView.swift */,
 				2C9398D71BEA110000681D61 /* TextCalculator.swift */,
+				2C1F744D1BF02F7B00021255 /* TextCal.swift */,
+				2C1F744F1BF02F7F00021255 /* StringPath.swift */,
+				2C1F74511BF02F9300021255 /* helper.swift */,
 				2C9398DB1BEA193C00681D61 /* TextCal.playground */,
 				2C9398981BE8904600681D61 /* Calculator.swift */,
-				2C3E63FC1BE85C7B007349E0 /* AnimationView.swift */,
 				2C3E63FD1BE85C7B007349E0 /* QCMethod.swift */,
 				2C2E36A11BE850A50041B02F /* textPlayground.playground */,
 				2C8CB9BA1BE7AB7E00EF8F7D /* Main.storyboard */,
@@ -276,12 +288,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C0120B21BF1F696008D0AD5 /* EMAnimation.swift in Sources */,
+				2C1F74521BF02F9300021255 /* helper.swift in Sources */,
 				2C3E63FE1BE85C7B007349E0 /* AnimationView.swift in Sources */,
 				2C8CB9B91BE7AB7E00EF8F7D /* ViewController.swift in Sources */,
 				2C9398D81BEA110000681D61 /* TextCalculator.swift in Sources */,
 				2C3E63FF1BE85C7B007349E0 /* QCMethod.swift in Sources */,
 				2C9398991BE8904600681D61 /* Calculator.swift in Sources */,
+				2C1F744E1BF02F7B00021255 /* TextCal.swift in Sources */,
 				2C8CB9B71BE7AB7E00EF8F7D /* AppDelegate.swift in Sources */,
+				2C1F74501BF02F7F00021255 /* StringPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

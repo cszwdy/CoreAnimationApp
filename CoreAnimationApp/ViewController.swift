@@ -8,17 +8,33 @@
 
 import UIKit
 
+public struct ssss {
+  
+  let bbb: String
+}
+
 class ViewController: UIViewController {
   
+  @IBOutlet weak var textView: UITextView!
   @IBOutlet weak var animationView: AnimationView!
   var layers = [String: CALayer]()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    textView.textContainer.lineFragmentPadding = 0.0
+//    textView.textContainer.exclusionPaths = exclusionPaths ?? []
+    textView.textContainerInset = UIEdgeInsetsZero
+    textView.attributedText = demoString()
+    textView.bounds.size = textView.contentSize
+//    textView.hidden = true
     
+    textView.showLinefragments()
     
+    let lines = textView.layoutManager.lineFragmentUesedRectsAndEffctiveAttributteStrings()
     
-    
+    animationView.lines = lines
+    animationView.frame = textView.frame
+    animationView.setupLayers()
   }
   @IBAction func tapAction(sender: UITapGestureRecognizer) {
     
@@ -31,79 +47,93 @@ class ViewController: UIViewController {
   }
   
   override func viewDidAppear(animated: Bool) {
-//    setupLayers()
-//    animationView.transform = CGAffineTransformMakeRotation(45.0 * CGFloat(M_PI) / 180.0)
     animationView.layer.drawsAsynchronously = true
     animationView.addFadeAnimation()
     
     
-    let font = UIFont(name: "Zapfino", size: 24)!
-    
-    let shadow = NSShadow()
-    shadow.shadowColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-    shadow.shadowOffset = CGSizeMake(20.1, 20.1)
-    shadow.shadowBlurRadius = 1
-    
-    let attributes = [
-      NSFontAttributeName: font,
-      NSForegroundColorAttributeName: UIColor.blueColor().colorWithAlphaComponent(1)
-      //      NSShadowAttributeName: shadow,
-      //      NSKernAttributeName: 10,
-      //      NSLigatureAttributeName: 1
-    ]
-    
-    let textStr = TextMetaData(str: "fou", rect: view.bounds, insets: UIEdgeInsetsZero, attributes: attributes, font: ["fontName": "Zapfino", "fontSize": 24.0])
-    
-    let texts = textStr.spliteTextBy(.Characters)
-    
-    let layer = CALayer()
-    layer.frame = CGRect(x: 0, y: 0, width: 320, height: 568)
-    layer.backgroundColor = UIColor.redColor().CGColor
-    for (i, text) in texts.enumerate() {
-//      if i == 0 {
-//        continue
-//      }
-      
-      print(text.rect)
-      let textLayer = CATextLayer()
-      textLayer.frame = CGRectMake(text.rect.origin.x, text.rect.origin.y, CGRectGetWidth(text.rect) + 40, CGRectGetHeight(text.rect) + 40)
-      textLayer.backgroundColor = UIColor.clearColor().CGColor
-      textLayer.alignmentMode = kCAAlignmentCenter
-      textLayer.string = text.str
-      textLayer.font = "Zapfino"
-      textLayer.fontSize = 24
-      layer.addSublayer(textLayer)
-      
-      
-    }
-    
-    view.layer.addSublayer(layer)
   }
   
   
-  func setupLayers() {
-    let demoString = "🐱"
-    let demoStringFont2 = UIFont(name:"Zapfino", size:10)!
-    let width = CGRectGetWidth(view.bounds)
-    let height = CGRectGetHeight(view.bounds)
-    let column = 10
-    let row = 20
-    let widthRate = width / CGFloat(column)
-    let heightRate = height / CGFloat(row)
+  func demoString() -> NSAttributedString
+  {
+    // Create the attributed string
+    let demoString = NSMutableAttributedString(string:"Welcome to 🐱🐱Attributed String Creator\n\nSimply paste, write or import any kind of text into this 🐱🐱area and the code to make an NSMutableAtrributedString for it will be generated below; 🐱🐱along with all of its font, colour and paragraph formatting. \n\nSelect a name for your variable in the top left corner, copy the code into your IDE and assign it.\n\nThanks For Using Attributed String Creator")
     
-    for i in 0..<column {
-      for j in 0..<row {
-        let frame = CGRectMake(CGFloat(i) * widthRate, CGFloat(j) * heightRate, widthRate, heightRate)
-        let textLayer = CATextLayer()
-        textLayer.frame = frame
-        textLayer.foregroundColor = UIColor.redColor().CGColor
-        textLayer.string = demoString
-        textLayer.font = demoStringFont2
-        textLayer.fontSize = 10
-        view.layer.addSublayer(textLayer)
-        layers["layer(i,j)"] = textLayer
-      }
-    }
+    // Declare the fonts
+    let demoStringFont1 = UIFont(name:"AvenirNext-Regular", size:24.0)
+    let demoStringFont2 = UIFont(name:"Helvetica", size:12.0)
+    let demoStringFont3 = UIFont(name:"Avenir-Book", size:12.0)
+    let demoStringFont4 = UIFont(name:"TimesNewRomanPSMT", size:12.0)
+    let demoStringFont5 = UIFont(name:"Zapfino", size:12.0)
+    
+    // Declare the colors
+    let demoStringColor1 = UIColor(red: 0.292745, green: 0.461693, blue: 0.998524, alpha: 1.000000)
+    let demoStringColor2 = UIColor(red: 0.000000, green: 0.000000, blue: 0.000000, alpha: 1.000000)
+    let demoStringColor3 = UIColor(red: 0.320477, green: 0.000000, blue: 0.478882, alpha: 1.000000)
+    let demoStringColor4 = UIColor(red: 0.060450, green: 0.490443, blue: 0.763762, alpha: 1.000000)
+    
+    // Declare the paragraph styles
+    let demoStringParaStyle1 = NSMutableParagraphStyle()
+    demoStringParaStyle1.alignment = NSTextAlignment.Center
+    demoStringParaStyle1.tabStops = [
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 28.000000, options:
+        [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 56.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 84.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 112.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 140.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 168.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 196.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 224.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 252.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 280.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 308.000000, options: [String: AnyObject]()),
+      NSTextTab(textAlignment: NSTextAlignment.Left, location: 336.000000, options: [String: AnyObject]())]
+    
+    
+    // Create the attributes and add them to the string
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(0,36))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont1!, range:NSMakeRange(0,36))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor1, range:NSMakeRange(0,36))
+    demoString.addAttribute(NSUnderlineStyleAttributeName, value:1, range:NSMakeRange(0,36))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(36,1))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont1!, range:NSMakeRange(36,1))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(36,1))
+    demoString.addAttribute(NSUnderlineStyleAttributeName, value:1, range:NSMakeRange(36,1))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(37,1))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(37,1))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(37,1))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(38,86))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(38,86))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont3!, range:NSMakeRange(38,86))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(124,25))
+    demoString.addAttribute(NSForegroundColorAttributeName, value:demoStringColor3, range:NSMakeRange(124,25))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(124,25))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont3!, range:NSMakeRange(124,25))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(149,55))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(149,55))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont3!, range:NSMakeRange(149,55))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(204,4))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(204,4))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont4!, range:NSMakeRange(204,4))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(208,2))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(208,2))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont3!, range:NSMakeRange(208,2))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(210,6))
+    demoString.addAttribute(NSForegroundColorAttributeName, value:demoStringColor4, range:NSMakeRange(210,6))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(210,6))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont3!, range:NSMakeRange(210,6))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(216,128))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(216,128))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont3!, range:NSMakeRange(216,128))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(344,1))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(344,1))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont2!, range:NSMakeRange(344,1))
+    demoString.addAttribute(NSUnderlineColorAttributeName, value:demoStringColor2, range:NSMakeRange(345,42))
+    demoString.addAttribute(NSParagraphStyleAttributeName, value:demoStringParaStyle1, range:NSMakeRange(345,42))
+    demoString.addAttribute(NSFontAttributeName, value:demoStringFont5!, range:NSMakeRange(345,42))
+    
+    return NSAttributedString(attributedString:demoString)
   }
   
 

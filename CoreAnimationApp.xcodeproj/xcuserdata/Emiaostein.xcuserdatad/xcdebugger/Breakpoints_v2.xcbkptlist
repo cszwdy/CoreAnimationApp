@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CoreAnimationApp/AnimationView.swift"
-            timestampString = "468218748.738333"
+            filePath = "CoreAnimationApp/Calculator.swift"
+            timestampString = "468233830.548125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "resetLayerPropertiesForLayerIdentifiers(_:)"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "spliteTextByCharacters()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CoreAnimationApp/Calculator.swift"
-            timestampString = "468233830.548125"
+            filePath = "CoreAnimationApp/AnimationView.swift"
+            timestampString = "468899590.736353"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "spliteTextByCharacters()"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "removeAllAnimations()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

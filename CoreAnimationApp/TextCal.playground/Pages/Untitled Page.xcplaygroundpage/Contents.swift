@@ -4,7 +4,7 @@ import UIKit
 
 let str = str18
 let font = fontDL
-let att = [NSFontAttributeName: font]
+let att = [NSFontAttributeName: font, NSUnderlineStyleAttributeName: 1]
 
 func demoString() -> NSAttributedString
 {
@@ -106,13 +106,16 @@ let lines = textView.layoutManager.lineFragmentUesedRectsAndEffctiveAttributteSt
 
 
 for (i, lineInfo) in lines.enumerate() {
+  if i != 0 {
+    break
+  }
   let rect = lineInfo.0
   let attr = lineInfo.1
   let origin = lineInfo.2
   
   let shapeLayer = CALayer()
 //  shapeLayer.backgroundColor = UIColor.blackColor().CGColor
-  shapeLayer.geometryFlipped = true
+//  shapeLayer.geometryFlipped = true
   shapeLayer.frame = rect
   let pathInfos = pathForLettersAttribueString(attr)
   
@@ -121,8 +124,8 @@ for (i, lineInfo) in lines.enumerate() {
       let emojiLayer = CATextLayer()
       //      emojiLayer.geometryFlipped = true
       emojiLayer.frame = pathInfo.emojiRect!
-      emojiLayer.backgroundColor = UIColor.redColor().CGColor
-      emojiLayer.frame.origin.y += CGRectGetHeight(rect) - origin.y
+//      emojiLayer.backgroundColor = UIColor.redColor().CGColor
+      emojiLayer.frame.origin.y += -pathInfo.emojiRect!.height + origin.y
       emojiLayer.string = pathInfo.attributeString
       shapeLayer.addSublayer(emojiLayer)
       
@@ -132,7 +135,7 @@ for (i, lineInfo) in lines.enumerate() {
 //      textShapeLayer.backgroundColor = UIColor.yellowColor().CGColor
       textShapeLayer.fillColor = UIColor.blueColor().CGColor
       textShapeLayer.frame = pathInfo.emojiRect!
-      textShapeLayer.frame.origin.y += CGRectGetHeight(rect) - origin.y
+      textShapeLayer.frame.origin.y += -pathInfo.emojiRect!.height + origin.y
 //      var transform = CGAffineTransformMakeTranslation(0, CGRectGetHeight(rect) - origin.y)
 //      let fixPath = CGPathCreateCopyByTransformingPath(pathInfo.path, &transform)
       textShapeLayer.path = pathInfo.path
